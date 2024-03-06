@@ -35,6 +35,7 @@ func main() {
 	case "encrypt":
 		if len(os.Args) < 4 {
 			fmt.Println("Usage: encrypt [input_file] [output_file]")
+			break
 		}
 		inF := os.Args[2]
 		outF := os.Args[3]
@@ -45,6 +46,7 @@ func main() {
 	case "decrypt":
 		if len(os.Args) < 4 {
 			fmt.Println("Usage: decrypt [input_file] [output_file]")
+			break
 		}
 		inF := os.Args[2]
 		outF := os.Args[3]
