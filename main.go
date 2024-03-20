@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
@@ -39,10 +40,13 @@ func main() {
 		}
 		inF := os.Args[2]
 		outF := os.Args[3]
+		start := time.Now()
 		err := encryptFile(inF, outF, key)
 		if err != nil {
 			fmt.Println(err.Error())
 		}
+		elapsed := time.Since(start)
+		fmt.Printf("file encrypted take: %v microseconds \n", elapsed.Microseconds())
 	case "decrypt":
 		if len(os.Args) < 4 {
 			fmt.Println("Usage: decrypt [input_file] [output_file]")
@@ -50,10 +54,13 @@ func main() {
 		}
 		inF := os.Args[2]
 		outF := os.Args[3]
+		start := time.Now()
 		err := decryptFile(inF, outF, key)
 		if err != nil {
 			fmt.Println(err.Error())
 		}
+		elapsed := time.Since(start)
+		fmt.Printf("file decrtpted take: %v microseconds \n", elapsed.Microseconds())
 	case "gen":
 		_, err := generateAESKey()
 		if err != nil {
